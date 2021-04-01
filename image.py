@@ -1,12 +1,17 @@
 from PIL import Image
-imagen = Image.open("images/amapolas.jpg")
+import os
 
+size = (300,300)
 
-def proceso(a, b):
-    reducida = imagen.resize((a, b))
-    reducida.show()
-    reducida.save('images/reducida.jpg')
-    print("LA IMAGEN SE HA GUARDADO")
+def proceso():
+    for f in os.listdir('.'):
+        if f.endswith('.jpg'):
+            i = Image.open(f)
+            fn, fext = os.path.splitext(f)
+            i.thumbnail(size)
+            i.save('reducidas/{}{}'.format(fn, fext))
+            
+
 
 print("OPCIONES PARA REDUCIR LA IMAGEN")
 print("1. 800x600 px")
@@ -17,8 +22,13 @@ opcion= input ("ELIJA UNA OPCION: ")
 opcion = int (opcion)
 
 if opcion == 1:
-    proceso (800, 600)
+    size = (800, 600)
+    proceso ()
 elif opcion == 2:
-    proceso (400, 300)
-else:
-    proceso (200, 150)
+    size = (400, 300)
+    proceso ()
+elif opcion == 3:
+    size = (200, 150)
+    proceso ()
+
+print("IMAGENES GUARDADAS")

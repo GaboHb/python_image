@@ -1,2 +1,17 @@
 # macOS
 .DS_Store
+
+###Linux##
+*~
+
+# temporary files which can be createn if a process still has a handle open of a deleted file 
+.fuse_hidden*
+
+#KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open files is removed but is still being accessed
+.nfs*
